@@ -1,3 +1,8 @@
+---
+description: create a new Architecture Decision Record (ADR)
+argument-hint:
+---
+
 # Create ADR Prompt
 
 ## ROLE

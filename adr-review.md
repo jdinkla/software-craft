@@ -1,3 +1,8 @@
+---
+description: review an existing Architecture Decision Record (ADR)
+argument-hint:
+---
+
 # Review ADR Prompt
 
 ## ROLE

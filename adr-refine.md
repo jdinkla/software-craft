@@ -1,3 +1,8 @@
+---
+description: refine and improve an existing Architecture Decision Record (ADR)
+argument-hint:
+---
+
 # Refine ADR Prompt
 
 ## ROLE
