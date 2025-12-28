@@ -1,4 +1,5 @@
 ---
+name: check-agents-md
 description: check the agents.md file
 argument-hint: 
 ---

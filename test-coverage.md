@@ -1,4 +1,5 @@
 ---
+name: test-coverage
 description: analyze test coverage
 argument-hint: 
 ---

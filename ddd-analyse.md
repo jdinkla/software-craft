@@ -1,4 +1,5 @@
 ---
+name: ddd-analyse
 description: create a domain model of the repository using DDD
 argument-hint: 
 ---

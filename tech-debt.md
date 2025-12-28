@@ -1,4 +1,5 @@
 ---
+name: tech-debt
 description: look out for tech debt
 argument-hint: 
 ---

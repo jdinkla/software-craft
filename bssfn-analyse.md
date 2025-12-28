@@ -1,4 +1,5 @@
 ---
+name: bssfn-analyse
 description: analyse the repository according to "Best Simple System for Now" (BSSFN)
 argument-hint: 
 ---

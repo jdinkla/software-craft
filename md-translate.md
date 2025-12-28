@@ -1,4 +1,5 @@
 ---
+name: md-translate
 description: translate German markdown to English
 argument-hint:
 ---

@@ -1,4 +1,5 @@
 ---
+name: adr-refine
 description: refine and improve an existing Architecture Decision Record (ADR)
 argument-hint:
 ---

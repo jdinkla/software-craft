@@ -1,4 +1,5 @@
 ---
+name: adr-review
 description: review an existing Architecture Decision Record (ADR)
 argument-hint:
 ---

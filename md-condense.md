@@ -1,4 +1,5 @@
 ---
+name: md-condense
 description: condense markdown content to its logical skeleton
 argument-hint:
 ---

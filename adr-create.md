@@ -1,4 +1,5 @@
 ---
+name: adr-create
 description: create a new Architecture Decision Record (ADR)
 argument-hint:
 ---

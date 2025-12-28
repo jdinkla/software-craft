@@ -1,4 +1,5 @@
 ---
+name: test-naming
 description: naming of unit tests
 argument-hint: 
 ---
