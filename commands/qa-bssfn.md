@@ -1,7 +1,5 @@
 ---
-name: bssfn-analyse
 description: analyse the repository according to "Best Simple System for Now" (BSSFN)
-argument-hint: 
 ---
 
 **Role:** You are acting as a Senior Software Architect and Technical Auditor with deep expertise in Dan North’s "Best Simple System for Now" (BSSFN) methodology and the "Cupid" properties of software.
