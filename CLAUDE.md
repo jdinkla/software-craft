@@ -4,32 +4,38 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What This Repository Is
 
-A collection of specialized prompt templates (`.md` files) for AI agents, focused on software architecture, engineering analysis, and content processing. There is no build system, no tests, and no compiled code — just markdown files with YAML frontmatter.
+This repository **is a Claude Code plugin** named `software-craft`, published via the marketplace at `jdinkla/claude-marketplace` (it appears there as a `github` source pointing at this repo). It bundles slash commands and skills for software architecture, engineering analysis, and content processing. There is no build system, no tests, and no compiled code — just markdown files with YAML frontmatter.
 
 ## Repository Structure
 
-- **Root `.md` files** — Standalone prompt templates, each defining a single agent role or task. Frontmatter fields: `name`, `description`, `argument-hint`.
-- **`commands/`** — Claude Code slash command definitions (e.g., `qa-docs.md`, `qa-bssfn.md`). These use frontmatter fields like `allowed-tools` and `model`.
+- **`.claude-plugin/plugin.json`** — The plugin manifest (`name`, `description`, `version`, `author`). The plugin name is `software-craft`.
+- **`commands/`** — Claude Code slash command definitions, one `.md` per command (e.g., `adr-create.md`, `tech-debt.md`, `qa-docs.md`). The command name comes from the filename, so `adr-create.md` is invoked as `/adr-create`. Frontmatter fields: `description`, `argument-hint`, and optionally `allowed-tools`, `model`.
 - **`skills/`** — Claude Code skill definitions with `SKILL.md` files. Each skill has its own subdirectory (e.g., `skills/work/`, `skills/check-models/`).
 - **`specs/`** — Background research and design rationale (e.g., `PromptWriting.md` on single vs. multiple prompt design).
 - **`AGENTS.md`** — Defines the three agent roles (Software Architect, DDD Practitioner, Quality & Maintenance Engineer) and their general principles.
 
+## Working on the plugin
+
+- Add a new command by creating `commands/<name>.md` with at least a `description` in frontmatter. Add a skill as `skills/<name>/SKILL.md`.
+- After changing any manifest or frontmatter, run `claude plugin validate .` from the repo root.
+- Installs resolve from the pushed GitHub repo, so changes must be committed and pushed before users see them.
+
 ## Agent Roles (from AGENTS.md)
 
-Three specialized roles, each with assigned prompt templates:
+Three specialized roles, each with assigned commands (in `commands/`):
 
-1. **Software Architect** — ADR creation/refinement/review, Kotlin architecture review (`adr-*.md`, `arch-review-kotlin.md`)
-2. **DDD Practitioner** — Domain analysis, bounded contexts, ubiquitous language (`ddd-analyse.md`, via `qa-bssfn.md`)
-3. **Quality & Maintenance Engineer** — Tech debt, test coverage, test naming (`tech-debt.md`, `test-coverage.md`, `test-naming.md`)
+1. **Software Architect** — ADR creation/refinement/review, Kotlin architecture review (`/adr-create`, `/adr-refine`, `/adr-review`, `/arch-review-kotlin`)
+2. **DDD Practitioner** — Domain analysis, bounded contexts, ubiquitous language (`/ddd-analyse`, `/qa-bssfn`)
+3. **Quality & Maintenance Engineer** — Tech debt, test coverage, test naming (`/tech-debt`, `/test-coverage`, `/test-naming`)
 
-Additional utility prompts handle content processing: `md-summarize.md`, `md-condense.md`, `md-translate.md`, `x-summarize.md`, `joke-statler-waldorf.md`.
+Additional utility commands handle content processing: `/md-summarize`, `/md-condense`, `/md-translate`, `/x-summarize`, `/joke-statler-waldorf`.
 
-## Conventions for Prompt Templates
+## Conventions for Commands
 
-- Each prompt is a self-contained `.md` file with YAML frontmatter (`---` delimited block at top)
-- Prompts define a clear **role**, **instructions**, **output format**, and often **constraints**
-- Design principle: prefer separate single-purpose prompts over one multi-mode prompt (see `specs/PromptWriting.md`)
-- Use `check-agents-md.md` to verify agent outputs comply with AGENTS.md principles
+- Each command is a self-contained `commands/<name>.md` file with YAML frontmatter (`---` delimited block at top); the command name comes from the filename
+- Commands define a clear **role**, **instructions**, **output format**, and often **constraints**
+- Design principle: prefer separate single-purpose commands over one multi-mode command (see `specs/PromptWriting.md`)
+- Use `/check-agents-md` to verify agent outputs comply with AGENTS.md principles
 
 ## Key Principles (from AGENTS.md)
 

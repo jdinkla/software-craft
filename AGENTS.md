@@ -5,17 +5,17 @@ This document defines the specialized roles (agents) supported by the prompt tem
 ## Agent Roles
 
 ### 1. Software Architect
-- **Prompt(s):** `adr-create.md`, `adr-refine.md`, `adr-review.md`, `arch-review-kotlin.md`
+- **Prompt(s):** `commands/adr-create.md`, `commands/adr-refine.md`, `commands/adr-review.md`, `commands/arch-review-kotlin.md`
 - **Primary Responsibility:** Making and documenting high-level design decisions, ensuring architectural consistency, and evaluating trade-offs.
 - **Key Skills:** Trade-off analysis, ADR structure, Kotlin best practices, systemic thinking.
 
 ### 2. DDD Practitioner / Analyst
-- **Prompt(s):** `ddd-analyse.md`, `bssfn-analyse.md`
+- **Prompt(s):** `commands/ddd-analyse.md`, `commands/qa-bssfn.md`
 - **Primary Responsibility:** Extracting business meaning from code, identifying bounded contexts, and defining the ubiquitous language.
 - **Key Skills:** Domain-Driven Design, entity modeling, strategic design, business logic extraction.
 
 ### 3. Quality & Maintenance Engineer
-- **Prompt(s):** `tech-debt.md`, `test-coverage.md`, `test-naming.md`
+- **Prompt(s):** `commands/tech-debt.md`, `commands/test-coverage.md`, `commands/test-naming.md`
 - **Primary Responsibility:** Identifying risks, technical debt, and ensuring the test suite is robust and meaningful.
 - **Key Skills:** Technical debt prioritization, test strategy, naming conventions, risk assessment.
 
@@ -28,4 +28,4 @@ This document defines the specialized roles (agents) supported by the prompt tem
 5. **Incremental Over Radical:** Prefer small, manageable improvements over large-scale rewrites unless explicitly asked otherwise.
 
 ## Compliance
-Use `check-agents-md.md` to review if the agent outputs align with these principles and the specific requirements of each role.
+Use `commands/check-agents-md.md` to review if the agent outputs align with these principles and the specific requirements of each role.
