@@ -10,7 +10,7 @@ This repository **is a Claude Code plugin** named `software-craft`, published vi
 
 - **`.claude-plugin/plugin.json`** — The plugin manifest (`name`, `description`, `version`, `author`). The plugin name is `software-craft`.
 - **`commands/`** — Claude Code slash command definitions, one `.md` per command (e.g., `adr-create.md`, `tech-debt.md`, `qa-docs.md`). The command name comes from the filename, so `adr-create.md` is invoked as `/adr-create`. Frontmatter fields: `description`, `argument-hint`, and optionally `allowed-tools`, `model`.
-- **`skills/`** — Claude Code skill definitions with `SKILL.md` files. Each skill has its own subdirectory (e.g., `skills/work/`, `skills/check-models/`).
+- **`skills/`** — Claude Code skill definitions with `SKILL.md` files. Each skill has its own subdirectory (e.g., `skills/work/`).
 - **`specs/`** — Background research and design rationale (e.g., `PromptWriting.md` on single vs. multiple prompt design).
 - **`AGENTS.md`** — Defines the three agent roles (Software Architect, DDD Practitioner, Quality & Maintenance Engineer) and their general principles.
 

@@ -55,11 +55,9 @@ Auto-invoked / user-invocable capabilities (see `skills/`):
 
 - **work** — start working on the task matching the current git branch
   (uses [beads](https://github.com/steveyegge/beads) `bd`).
-- **check-models** — look up the latest AI model identifiers for a provider and
-  compare against a `repository.yaml`.
 
-> Note: `work` and `check-models` are tailored to specific personal workflows
-> (beads issues, a `repository.yaml` model registry). Adapt them to your project.
+> Note: `work` is tailored to a specific personal workflow (beads issues).
+> Adapt it to your project.
 
 ## Roles
 
