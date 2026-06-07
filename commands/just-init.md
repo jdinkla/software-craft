@@ -1,19 +1,29 @@
 ---
-description: Inspect the current repo and generate a customized justfile (just command runner) tailored to its language, tooling, and workflows.
-argument-hint: "[--force to overwrite an existing justfile]"
+description: Inspect the current repo and generate or improve a customized justfile (just command runner) tailored to its language, tooling, and workflows.
+argument-hint: "[--force to fully overwrite an existing justfile instead of improving it]"
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash(just*), Bash(ls*), Bash(cat*), Bash(find*), Bash(test*)
 ---
 
 ## Goal
 
-Create a `justfile` at the root of the **current repository**, modeled on the
-conventions below but **customized to whatever this repo actually is**. A
-justfile is a set of named command recipes run via the [`just`](https://github.com/casey/just)
-command runner. The point is to give this repo a single, discoverable set of
-workflow shortcuts (`just --list`).
+Create **or improve** a `justfile` at the root of the **current repository**,
+modeled on the conventions below but **customized to whatever this repo actually
+is**. A justfile is a set of named command recipes run via the
+[`just`](https://github.com/casey/just) command runner. The point is to give
+this repo a single, discoverable set of workflow shortcuts (`just --list`).
 
-Arguments: `$ARGUMENTS` — if it contains `--force`, overwrite an existing
-justfile. Otherwise, **never clobber** an existing justfile (see Safety).
+**Two modes — decide based on whether a justfile already exists:**
+
+- **No justfile exists** → generate a new one from scratch (Step 2).
+- **A justfile already exists** → **improve the existing one in place**
+  (Step 2b). Do NOT regenerate from scratch and do NOT clobber it. Keep every
+  existing recipe and the project's own conventions; add what's missing, fix
+  what's broken, and bring it up to the house style.
+
+Arguments: `$ARGUMENTS` — `--force` is only relevant for an existing justfile:
+it permits a full from-scratch rewrite instead of an in-place improvement.
+Without `--force`, an existing justfile is **improved, never clobbered** (see
+Safety).
 
 ## Step 1 — Inspect the repo
 
@@ -38,13 +48,15 @@ Do NOT assume the stack. Detect it. Look for:
   and translate them into just recipes rather than inventing commands.
 - **Env loading** — presence of `.env` / `.env.example` → add
   `set dotenv-load := true`.
-- An **existing justfile** — read it; preserve any project-specific recipes
-  when regenerating under `--force`.
+- An **existing justfile** (`justfile`/`Justfile`/`.justfile`) — read it
+  fully. If one exists, you're in **improve mode** (Step 2b): note its existing
+  recipes, groups, variables, and conventions so you extend rather than replace
+  them.
 
 Use Glob/Grep/Read and a few `ls`/`cat` calls. Be quick but accurate — a wrong
 package manager makes every recipe useless.
 
-## Step 2 — Generate the justfile
+## Step 2 — Generate the justfile (no justfile exists)
 
 Follow these conventions (the house style, taken from the reference repo):
 
@@ -123,14 +135,55 @@ test *ARGS:
     <test command> {{ARGS}}
 ```
 
+## Step 2b — Improve the existing justfile (a justfile exists)
+
+When a justfile is already present, **edit it in place** with surgical changes
+rather than rewriting it. Treat the existing file as the source of truth for the
+project's conventions and respect them. Use the `Edit` tool, not a wholesale
+`Write`.
+
+Apply these improvements, in order of priority:
+
+1. **Fix breakage first** — recipes that reference tools/commands not present in
+   the repo (per Step 1), wrong package manager, typos, broken `{{...}}`
+   interpolation, or recipes that would fail to parse. A correct existing recipe
+   is never "improved" into a different command without reason.
+2. **Add missing standard recipes** the repo can actually support but the
+   justfile lacks — e.g. `lint`, `fmt`, `typecheck`, `test`, `install`, a
+   `check:` composite, a `default:` listing recipe. Only add recipes whose
+   underlying tool exists (Step 1's rule #9 still applies).
+3. **Mine new automation** — if CI workflows, a Makefile, npm scripts, or
+   pre-commit hooks contain commands not yet represented as recipes, add them.
+4. **Bring up to house style** without churning working recipes:
+   - Add `[group('<name>')]` and `[doc("...")]` attributes to recipes missing
+     them, matching the conventions in Step 2.
+   - Add a `default:` recipe (`@just --list --unsorted`) if absent.
+   - Add `set dotenv-load := true` if the repo has `.env`/`.env.example` and the
+     justfile doesn't already set it.
+   - Add `# --- Section ---` divider banners if the file groups recipes loosely.
+5. **Preserve everything project-specific** — custom recipes, variables,
+   parameters, comments, and ordering the author chose. Do not reorder or rename
+   existing recipes unless it fixes an actual problem; renaming a recipe breaks
+   anyone who calls it.
+
+If the existing justfile is already in good shape, make only the few edits that
+genuinely help (or none) and say so — do not manufacture changes.
+
+`--force` overrides this step: with `--force`, do a full from-scratch
+regeneration per Step 2, still preserving project-specific recipes you can't
+otherwise reconstruct.
+
 ## Step 3 — Write and verify
 
 - **Safety**: if a `justfile` (or `Justfile`/`.justfile`) already exists and
-  `--force` was not passed, do NOT overwrite it. Show the proposed content and
-  ask the user whether to overwrite or write to a different name.
-- Write the file to the repo root.
+  `--force` was not passed, do NOT overwrite it wholesale — **improve it in
+  place** via `Edit` (Step 2b). Only do a full `Write`/overwrite of an existing
+  justfile when `--force` was passed.
+- For a new justfile, write the file to the repo root.
 - If `just` is installed, run `just --list` to confirm it parses and the
   descriptions render. If `just` is missing, note how to install it
   (`brew install just` / `cargo install just` / package manager) and verify
   by re-reading the file instead.
-- Report a one-line summary: detected stack + the recipes you created.
+- Report a one-line summary: for a new file, detected stack + the recipes you
+  created; for an improved file, what you changed (recipes added / fixed /
+  annotated) or that it was already in good shape.
