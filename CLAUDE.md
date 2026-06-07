@@ -4,19 +4,18 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What This Repository Is
 
-This repository **is a Claude Code plugin** named `software-craft`, published via the marketplace at `jdinkla/claude-marketplace` (it appears there as a `github` source pointing at this repo). It bundles slash commands and skills for software architecture, engineering analysis, and content processing. There is no build system, no tests, and no compiled code — just markdown files with YAML frontmatter.
+This repository **is a Claude Code plugin** named `software-craft`, published via the marketplace at `jdinkla/claude-marketplace` (it appears there as a `github` source pointing at this repo). It bundles slash commands for software architecture, engineering analysis, and content processing. There is no build system, no tests, and no compiled code — just markdown files with YAML frontmatter.
 
 ## Repository Structure
 
 - **`.claude-plugin/plugin.json`** — The plugin manifest (`name`, `description`, `version`, `author`). The plugin name is `software-craft`.
 - **`commands/`** — Claude Code slash command definitions, one `.md` per command (e.g., `adr-create.md`, `tech-debt.md`, `qa-docs.md`). The command name comes from the filename, so `adr-create.md` is invoked as `/adr-create`. Frontmatter fields: `description`, `argument-hint`, and optionally `allowed-tools`, `model`.
-- **`skills/`** — Claude Code skill definitions with `SKILL.md` files. Each skill has its own subdirectory (e.g., `skills/work/`).
 - **`specs/`** — Background research and design rationale (e.g., `PromptWriting.md` on single vs. multiple prompt design).
 - **`AGENTS.md`** — Defines the three agent roles (Software Architect, DDD Practitioner, Quality & Maintenance Engineer) and their general principles.
 
 ## Working on the plugin
 
-- Add a new command by creating `commands/<name>.md` with at least a `description` in frontmatter. Add a skill as `skills/<name>/SKILL.md`.
+- Add a new command by creating `commands/<name>.md` with at least a `description` in frontmatter.
 - After changing any manifest or frontmatter, run `claude plugin validate .` from the repo root.
 - Installs resolve from the pushed GitHub repo, so changes must be committed and pushed before users see them.
 

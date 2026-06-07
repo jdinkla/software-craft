@@ -1,9 +1,8 @@
 # software-craft
 
 A [Claude Code](https://code.claude.com) plugin: a curated set of slash commands
-and skills for high-level software engineering — architecture, Domain-Driven
-Design, Architecture Decision Records, quality & maintenance, and content
-processing.
+for high-level software engineering — architecture, Domain-Driven Design,
+Architecture Decision Records, quality & maintenance, and content processing.
 
 ## Install
 
@@ -48,16 +47,6 @@ Pull updates later with `/plugin marketplace update jdinkla-marketplace`.
 | `/x-summarize` | Summarize a blog post into a 250-char X teaser |
 | `/joke-statler-waldorf` | Summarize and roast input Statler-&-Waldorf style |
 | `/normal` | Just follow the request, output markdown |
-
-## Skills
-
-Auto-invoked / user-invocable capabilities (see `skills/`):
-
-- **work** — start working on the task matching the current git branch
-  (uses [beads](https://github.com/steveyegge/beads) `bd`).
-
-> Note: `work` is tailored to a specific personal workflow (beads issues).
-> Adapt it to your project.
 
 ## Roles
 
