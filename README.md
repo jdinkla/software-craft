@@ -21,7 +21,6 @@ Pull updates later with `/plugin marketplace update jdinkla-marketplace`.
 | `/adr-create` | Create a new Architecture Decision Record from notes |
 | `/adr-refine` | Refine and improve an existing ADR |
 | `/adr-review` | Review an ADR for quality and soundness (no rewrite) |
-| `/arch-review-kotlin` | Architecture review of a Kotlin repository |
 
 ### Domain-Driven Design
 | Command | What it does |
@@ -46,7 +45,6 @@ Pull updates later with `/plugin marketplace update jdinkla-marketplace`.
 | `/md-translate` | Translate German markdown to English (preserving formatting) |
 | `/x-summarize` | Summarize a blog post into a 250-char X teaser |
 | `/joke-statler-waldorf` | Summarize and roast input Statler-&-Waldorf style |
-| `/normal` | Just follow the request, output markdown |
 
 ## Roles
 

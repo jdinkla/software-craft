@@ -5,9 +5,9 @@ This document defines the specialized roles (agents) supported by the prompt tem
 ## Agent Roles
 
 ### 1. Software Architect
-- **Prompt(s):** `commands/adr-create.md`, `commands/adr-refine.md`, `commands/adr-review.md`, `commands/arch-review-kotlin.md`
+- **Prompt(s):** `commands/adr-create.md`, `commands/adr-refine.md`, `commands/adr-review.md`
 - **Primary Responsibility:** Making and documenting high-level design decisions, ensuring architectural consistency, and evaluating trade-offs.
-- **Key Skills:** Trade-off analysis, ADR structure, Kotlin best practices, systemic thinking.
+- **Key Skills:** Trade-off analysis, ADR structure, systemic thinking.
 
 ### 2. DDD Practitioner / Analyst
 - **Prompt(s):** `commands/ddd-analyse.md`, `commands/qa-bssfn.md`

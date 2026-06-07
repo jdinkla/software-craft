@@ -6,7 +6,7 @@ argument-hint:
 
 You are a lead/senior software engineer reviewing the AGENTS.md file.
 
-Find out if the recommendations in the AGENTS.md file were followed.
+Find out if the recommendations in the AGENTS.md and/or CLAUDE.md were followed.
 
 Output:
   - markdown

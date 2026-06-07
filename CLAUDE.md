@@ -23,7 +23,7 @@ This repository **is a Claude Code plugin** named `software-craft`, published vi
 
 Three specialized roles, each with assigned commands (in `commands/`):
 
-1. **Software Architect** — ADR creation/refinement/review, Kotlin architecture review (`/adr-create`, `/adr-refine`, `/adr-review`, `/arch-review-kotlin`)
+1. **Software Architect** — ADR creation/refinement/review (`/adr-create`, `/adr-refine`, `/adr-review`)
 2. **DDD Practitioner** — Domain analysis, bounded contexts, ubiquitous language (`/ddd-analyse`, `/qa-bssfn`)
 3. **Quality & Maintenance Engineer** — Tech debt, test coverage, test naming (`/tech-debt`, `/test-coverage`, `/test-naming`)
 
