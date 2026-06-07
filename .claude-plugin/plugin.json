@@ -1,7 +1,7 @@
 {
   "name": "software-craft",
-  "description": "Prompts for software architecture, DDD, ADRs, QA, and content processing — ADR create/refine/review, Kotlin arch review, DDD analysis, tech-debt and test audits, plus markdown/X summarizers.",
-  "version": "0.2.0",
+  "description": "Prompts for software architecture, DDD, ADRs, QA, and content processing — ADR create/refine/review, DDD analysis, tech-debt and test audits, plus markdown/X summarizers.",
+  "version": "0.3.0",
   "author": {
     "name": "Joern Dinkla",
     "email": "joern.dinkla@gmail.com"
