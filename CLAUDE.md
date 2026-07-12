@@ -11,7 +11,6 @@ This repository **is a Claude Code plugin** named `software-craft`, published vi
 - **`.claude-plugin/plugin.json`** — The plugin manifest (`name`, `description`, `version`, `author`). The plugin name is `software-craft`.
 - **`commands/`** — Claude Code slash command definitions, one `.md` per command (e.g., `adr-create.md`, `tech-debt.md`, `qa-docs.md`). The command name comes from the filename, so `adr-create.md` is invoked as `/adr-create`. Frontmatter fields: `description`, `argument-hint`, and optionally `allowed-tools`, `model`.
 - **`specs/`** — Background research and design rationale (e.g., `PromptWriting.md` on single vs. multiple prompt design).
-- **`AGENTS.md`** — Defines the three agent roles (Software Architect, DDD Practitioner, Quality & Maintenance Engineer) and their general principles.
 
 ## Working on the plugin
 
@@ -19,24 +18,23 @@ This repository **is a Claude Code plugin** named `software-craft`, published vi
 - After changing any manifest or frontmatter, run `claude plugin validate .` from the repo root.
 - Installs resolve from the pushed GitHub repo, so changes must be committed and pushed before users see them.
 
-## Agent Roles (from AGENTS.md)
+## Command Groups
 
-Three specialized roles, each with assigned commands (in `commands/`):
+The commands cluster into three engineering roles:
 
 1. **Software Architect** — ADR creation/refinement/review (`/adr-create`, `/adr-refine`, `/adr-review`)
 2. **DDD Practitioner** — Domain analysis, bounded contexts, ubiquitous language (`/ddd-analyse`, `/qa-bssfn`)
-3. **Quality & Maintenance Engineer** — Tech debt, test coverage, test naming (`/tech-debt`, `/test-coverage`, `/test-naming`)
+3. **Quality & Maintenance Engineer** — Tech debt, test coverage, test naming, docs (`/tech-debt`, `/test-coverage`, `/test-naming`, `/qa-docs`)
 
-Additional utility commands handle content processing: `/md-summarize`, `/md-condense`, `/md-translate`, `/x-summarize`, `/joke-statler-waldorf`.
+Additional utility commands handle content processing (`/md-summarize`, `/md-condense`, `/md-translate`) and repo setup (`/just-init`, `/backlog-init`).
 
 ## Conventions for Commands
 
 - Each command is a self-contained `commands/<name>.md` file with YAML frontmatter (`---` delimited block at top); the command name comes from the filename
 - Commands define a clear **role**, **instructions**, **output format**, and often **constraints**
 - Design principle: prefer separate single-purpose commands over one multi-mode command (see `specs/PromptWriting.md`)
-- Use `/check-agents-md` to verify agent outputs comply with AGENTS.md principles
 
-## Key Principles (from AGENTS.md)
+## Key Principles
 
 1. Be concise but precise — actionable insights, clear evidence
 2. Context first — understand constraints before suggesting changes
