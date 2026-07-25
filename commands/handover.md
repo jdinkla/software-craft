@@ -48,7 +48,12 @@ the codebase — the next session can read those itself. Point at them instead
 
 > For the next agent session: read this, then delete it once you have
 > absorbed it. It describes conversation state, not repo state — verify
-> anything time-sensitive against the actual repo.
+> anything time-sensitive against the actual repo. If you finish the work
+> this file describes, do not leave the file behind: route anything durable
+> to where it will be read again — settled decisions and gotchas to the
+> repo's CLAUDE.md, lessons about working with the user to memory, remaining
+> tasks to the task board — then delete this file. A handover that outlives
+> its work misleads the next reader.
 
 ## Task
 <What we are doing and why, in one or two sentences. The user's goal, not
@@ -79,6 +84,24 @@ files that are part of the work.>
 ## Open questions for the user
 - <Anything blocked on user input. Omit section if none.>
 ```
+
+## Lifecycle: a handover has exactly one reader
+
+The file is written for the next session and nobody after it. Once the work it
+describes is finished, nothing routes an agent to it again — it becomes stale
+instructions that read as current. So the session that *finishes* the work
+composts the handover rather than archiving it:
+
+- decisions a future change must not quietly undo → the repo's CLAUDE.md
+- codebase gotchas and traps discovered the hard way → the repo's CLAUDE.md
+- lessons about working with the user → auto-memory
+- lessons about a plugin/generator that produced the repo → leave them in the
+  repo's own records (ledgers, commit history) for that plugin's retro sweep;
+  don't hand-patch the plugin
+- remaining tasks → the task board, or the user
+- narration of state and history → nowhere; git log already has it
+
+Then delete the file — git history keeps it if it is ever needed.
 
 ## Constraints
 
